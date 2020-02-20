@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+  <script>
+    function openWin() {
+      var inputTicker = document.getElementById("ticker").value;
+      window.open("/home");
+    }
+  </script>
+  <h2 class="footer-heading mb-4">Enter a Stock Ticker</h2>
+  <form method="post">
+      <input name="tickerText">
+      <input type="submit", onclick = "openWin">
+  </form>
+</html>
