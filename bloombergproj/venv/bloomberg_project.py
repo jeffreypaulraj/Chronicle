@@ -34,7 +34,7 @@ name_url = "https://api-v2.intrinio.com/companies/"
 name_url_2 = "?api_key=OjkwYTJmMzc1YWU1OGE4MDgxZmQ2YjlmYjRjZTBiZmJi"
 
 news_url = "https://newsapi.org/v2/everything?q="
-news_url_2 = "&from=2020-02-09&to=2020-02-16&sortBy=popularity&apiKey=2ca74f9bf01f4f648650d30f0381f633"
+news_url_2 = "&from=2021-01-09&to=2021-01-14&sortBy=popularity&apiKey=2ca74f9bf01f4f648650d30f0381f633"
 
 consumer_key="dLWxOxvWyQHvjh97moMHL63tF"
 consumer_secret="chasb9g6x9Y0UrCnjbPTV02FsGPXLkF6QkfNSR7Q1FsOxhjxES"
@@ -223,7 +223,8 @@ def detect_tweet_sentiment(ticker):
     tweet_list = []
     tweet_user_list = []
     tweet_user_pic_list = []
-    access_tweets = api_call.search(q=str(ticker), tweet_mode='extended', lang='en', count=100)
+    # access_tweets = api_call.search(q=str(ticker), tweet_mode='extended', lang='en', count=100)
+    access_tweets = []
     total_polarity = 0
     for tweet in access_tweets:
         tweet_list.append(tweet.full_text)
@@ -231,7 +232,8 @@ def detect_tweet_sentiment(ticker):
         tweet_user_pic_list.append(str(tweet.user._json['profile_image_url']))
         for sentence in TextBlob(tweet.full_text).sentences:
             polarity_list.append(sentence.sentiment.polarity)
-    total_polarity = statistics.mean(polarity_list)
+    # total_polarity = statistics.mean(polarity_list)
+    total_polarity = 0
     return [total_polarity, polarity_list, tweet_list, tweet_user_list, tweet_user_pic_list]
 
 def final_tweet_recommendation(total_polarity, company_name):
